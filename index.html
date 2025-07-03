@@ -5,17 +5,21 @@
   <title>Stay Tuned</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    /* 🌑 STYLE */
+    body, html {
       margin: 0;
+      padding: 0;
+      overflow: hidden;
       background: radial-gradient(circle at center, #0a0a0a, #121212);
       font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
       color: #00ffcc;
       display: flex;
-      align-items: center;
       justify-content: center;
-      height: 100vh;
+      align-items: center;
       flex-direction: column;
       text-align: center;
+      z-index: 1;
     }
 
     h1 {
@@ -24,20 +28,82 @@
       animation: blink 1.5s infinite;
     }
 
+    p {
+      font-size: 1.2em;
+      color: #aaa;
+      margin-top: 20px;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.5; }
     }
-
-    p {
-      font-size: 1.2em;
-      color: #888;
-      margin-top: 20px;
-    }
   </style>
 </head>
 <body>
+
+  <!-- 🌌 TEXTE -->
   <h1>Stay Tuned</h1>
-  <p>AutoGuard X se prépare en coulisse...</p>
+  <p>AutoGuard X est presque prêt à décoller...</p>
+
+  <!-- 🪐 FOND ÉTOILÉ -->
+  <canvas id="stars"></canvas>
+
+  <!-- 🌠 SCRIPT JS -->
+  <script>
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createStars() {
+      stars = [];
+      for (let i = 0; i < 150; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 1.5,
+          speed: Math.random() * 0.5 + 0.2
+        });
+      }
+    }
+
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let star of stars) {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fillStyle = "#00ffcc";
+        ctx.fill();
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      }
+      requestAnimationFrame(animateStars);
+    }
+
+    window.addEventListener('resize', () => {
+      resize();
+      createStars();
+    });
+
+    resize();
+    createStars();
+    animateStars();
+  </script>
+
 </body>
 </html>
