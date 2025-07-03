@@ -2,125 +2,42 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Ayoub Lamliki - Portfolio</title>
+  <title>Stay Tuned</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* 💅 STYLE CSS */
     body {
       margin: 0;
+      background: radial-gradient(circle at center, #0a0a0a, #121212);
       font-family: 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    header {
-      text-align: center;
-      padding: 60px 20px 30px;
-    }
-
-    header h1 {
-      font-size: 3em;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { color: #00ffcc; }
-      50% { color: #0099ff; }
-    }
-
-    .links {
+      color: #00ffcc;
       display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 20px;
-      margin: 30px 0;
-      flex-wrap: wrap;
-    }
-
-    .links a {
-      text-decoration: none;
-      background: #0099ff;
-      padding: 12px 20px;
-      color: #fff;
-      border-radius: 8px;
-      transition: background 0.3s ease;
-    }
-
-    .links a:hover {
-      background: #00ffcc;
-      color: #000;
-    }
-
-    section {
+      height: 100vh;
+      flex-direction: column;
       text-align: center;
-      padding: 40px 20px;
     }
 
-    .project {
-      background: rgba(255,255,255,0.1);
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 600px;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.5s ease;
+    h1 {
+      font-size: 3em;
+      letter-spacing: 2px;
+      animation: blink 1.5s infinite;
     }
 
-    .project.visible {
-      opacity: 1;
-      transform: translateY(0);
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
     }
 
-    footer {
-      text-align: center;
-      font-size: 0.9em;
-      padding: 20px;
-      background: #111;
+    p {
+      font-size: 1.2em;
+      color: #888;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-
-  <!-- 🧠 SECTION INTRO -->
-  <header>
-    <h1>👨‍💻 Ayoub Lamliki</h1>
-    <p>Portfolio • Embedded Systems • AutoGuard X</p>
-  </header>
-
-  <!-- 🔗 LIENS -->
-  <div class="links">
-    <a href="https://linkedin.com/in/tonlinkedin" target="_blank">LinkedIn</a>
-    <a href="https://github.com/LamlikiAyoub" target="_blank">GitHub</a>
-    <a href="https://twitter.com/tontwitter" target="_blank">Twitter</a>
-  </div>
-
-  <!-- 🚗 PROJETS -->
-  <section>
-    <h2>Mes projets 🔧</h2>
-    <div class="project">AutoGuard X – Suivi intelligent de batterie</div>
-    <div class="project">Weather Station – Multitâche avec FreeRTOS</div>
-    <div class="project">Dashboard simulation – HTML + ESP32</div>
-  </section>
-
-  <!-- 🦾 FOOTER -->
-  <footer>
-    &copy; 2025 Ayoub Lamliki • Tous droits réservés
-  </footer>
-
-  <!-- ⚙️ SCRIPT JS -->
-  <script>
-    // Animation d’apparition des projets
-    const projects = document.querySelectorAll('.project');
-    window.addEventListener('scroll', () => {
-      projects.forEach(proj => {
-        const top = proj.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-          proj.classList.add('visible');
-        }
-      });
-    });
-  </script>
-
+  <h1>Stay Tuned</h1>
+  <p>AutoGuard X se prépare en coulisse...</p>
 </body>
 </html>
