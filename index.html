@@ -5,21 +5,31 @@
   <title>Stay Tuned</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* 🌑 STYLE */
-    body, html {
+    html, body {
       margin: 0;
       padding: 0;
       overflow: hidden;
-      background: radial-gradient(circle at center, #0a0a0a, #121212);
+      background: #0a0a0a;
       font-family: 'Segoe UI', sans-serif;
       height: 100vh;
       color: #00ffcc;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
+      position: relative;
+    }
+
+    canvas#stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
       z-index: 1;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     h1 {
@@ -34,13 +44,6 @@
       margin-top: 20px;
     }
 
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
-
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.5; }
@@ -49,14 +52,13 @@
 </head>
 <body>
 
-  <!-- 🌌 TEXTE -->
-  <h1>Stay Tuned</h1>
-  <p>AutoGuard X est presque prêt à décoller...</p>
-
-  <!-- 🪐 FOND ÉTOILÉ -->
   <canvas id="stars"></canvas>
 
-  <!-- 🌠 SCRIPT JS -->
+  <div class="content">
+    <h1>Stay Tuned</h1>
+    <p>AutoGuard X est presque prêt à décoller...</p>
+  </div>
+
   <script>
     const canvas = document.getElementById('stars');
     const ctx = canvas.getContext('2d');
